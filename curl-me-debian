@@ -2,25 +2,38 @@
 # Original shell script from  https://github.com/iiab/iiab-factory/blob/master/curl-me
 # Start loading IIAB. "bash -x" is debug mode
 
-set -e
-apt-get install -y git
+# use the normal ansible install to bring in the dependencies
+apt-get -y update
+apt-get -y upgrade
+apt-get install -y  mlocate vim git
+
 mkdir -p /opt/iiab
 
 # Get the extras
 cd /opt/iiab
-git clone https://github.com/iiab/iiab-factory --depth 1
 
 # Get the current install options (we'll do more with these later like manage releases)
 #source /opt/iiab/iiab-factory/factory-settings
 
-git clone https://github.com/iiab/iiab-admin-console --depth 1
-git clone https://github.com/iiab/iiab-menu --depth 1
+git clone https://github.com/iiab/iiab-admin-console
+pushd iiab-admin-console
+git remote add ghunt https://github.com/georgejhunt/iiab-admin
+git fetch --all
+popd
+
+git clone https://github.com/iiab/iiab-factory
+pushd iiab-factory
+git remote add ghunt https://github.com/georgejhunt/iiab-factory
+git fetch --all
+popd
 
 # Get iiab
-git clone https://github.com/jvonau/iiab -b test
+git clone https://github.com/georgejhunt/iiab -b test
+pushd iiab 
+git remote add ghunt https://github.com/georgejhunt/iiab 
+git fetch --all 
+popd 
 
-cd /opt/iiab/iiab
-./scripts/ansible
 ./runansible
 
 cd /opt/iiab/iiab-admin-console

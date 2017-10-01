@@ -36,6 +36,10 @@ popd
 
 # goto the main repo
 cd /opt/iiab/iiab
+
+# install ansible
+./scripts/ansible
+
 ./runansible
 
 cd /opt/iiab/iiab-admin-console

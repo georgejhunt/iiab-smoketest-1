@@ -34,6 +34,8 @@ git remote add ghunt https://github.com/georgejhunt/iiab
 git fetch --all 
 popd 
 
+# goto the main repo
+cd /opt/iiab/iiab
 ./runansible
 
 cd /opt/iiab/iiab-admin-console

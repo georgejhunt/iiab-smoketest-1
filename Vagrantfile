@@ -17,8 +17,6 @@ Vagrant.configure("2") do |config|
     "Centrino Advanced-N 6205 [Taylor Peak]"]
   config.vm.network "private_network", type: "dhcp"
   config.vm.network "private_network", type: "dhcp"
-  config.customize ["modifyvm", :id, "--memory", 2048]
-  config.customize ["modifyvm", :id, "--cpus", 2]
   # Vagrant-dependency-manager to install required Vagrant plugins
   if File.exists?(File.dirname(__FILE__)+ "/dependency_manager.rb")
     require File.dirname(__FILE__)+ "/dependency_manager"
@@ -43,6 +41,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    vb.customize ["modifyvm", :id, "--memory", 2048]
+    vb.customize ["modifyvm", :id, "--cpus", 2]
   end
 
   config.vm.define "debian", primary: true, autostart: true do |debian|

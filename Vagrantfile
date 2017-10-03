@@ -17,8 +17,8 @@ Vagrant.configure("2") do |config|
     "Centrino Advanced-N 6205 [Taylor Peak]"]
   config.vm.network "private_network", type: "dhcp"
   config.vm.network "private_network", type: "dhcp"
-  config.memory = 2048
-  config.cpus = 2
+  config.vm.customize ["modifyvm", :id, "--memory", 2048]
+  config.vm.customize ["modifyvm", :id, "--cpus", 2]
   # Vagrant-dependency-manager to install required Vagrant plugins
   if File.exists?(File.dirname(__FILE__)+ "/dependency_manager.rb")
     require File.dirname(__FILE__)+ "/dependency_manager"

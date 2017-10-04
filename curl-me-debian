@@ -27,6 +27,8 @@ git remote add ghunt https://github.com/georgejhunt/iiab-factory
 git fetch --all
 popd
 
+git clone https://github.com/iiab/iiab-menu
+
 # Get iiab
 git clone https://github.com/georgejhunt/iiab -b test
 pushd iiab 

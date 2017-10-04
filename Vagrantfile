@@ -41,8 +41,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-  #  vb.customize ["modifyvm", :id, "--memory", 2048]
-  #  vb.customize ["modifyvm", :id, "--cpus", 2]
+    vb.customize ["modifyvm", :id, "--memory", 2048]
+    vb.customize ["modifyvm", :id, "--cpus", 2]
   end
 
   config.vm.define "debian", primary: true, autostart: true do |debian|

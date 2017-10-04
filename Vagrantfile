@@ -59,7 +59,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "fedora", autostart: false do |fedora|
-    fedora.vm.box = "fedora/26-cloud-base"
+    fedora.vm.box = "rafacas/fedora18-plain"
     # BUG curl-me script requires 'lsb_release' which is not part of Fedora core
     fedora.vm.provision "shell", :run => 'always', inline: "dnf -y update && dnf -y install redhat-lsb-core"
     fedora.vm.provision "shell", :run => 'always', path: "curl-me-fedora"
